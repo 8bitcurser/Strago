@@ -15,6 +15,9 @@ var target: CharacterBody2D
 @onready var agent = $NavigationAgent2D
 @onready var sprite = $Sprite
 
+signal killed(unit: CharacterBody2D)
+
+
 func _ready():
 	var gm = get_node('/root/main')
 	if is_player:
@@ -51,6 +54,7 @@ func move_to_location(location):
 func take_damage(damage_to_take):
 	health -= damage_to_take
 	if health <= 0:
+		killed.emit(self)
 		queue_free()
 		
 	sprite.modulate = Color.RED

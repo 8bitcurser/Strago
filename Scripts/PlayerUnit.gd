@@ -4,5 +4,3 @@ extends Unit
 
 func toggle_selection_visual(toggle):
 	selection_visual.visible = toggle
-
-
