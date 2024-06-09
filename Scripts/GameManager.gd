@@ -1,9 +1,19 @@
 extends Node2D
 
+@onready var win_or_lose = $WinOrLose
+
 var selected_units: Array[CharacterBody2D]
 var players: Array[CharacterBody2D]
 var enemies: Array[CharacterBody2D]
+var killed_players: int = 0
 
+
+func _ready():
+	for player in players:
+		player.killed.connect(_on_unit_killed)
+	for enemy in enemies:
+		enemy.killed.connect(_on_unit_killed)
+	
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -34,7 +44,6 @@ func _select_unit(unit):
 	if unit in selected_units:
 		_unselect_unit(unit)
 		return
-	unit.killed.connect(_on_unit_killed)
 	selected_units.append(unit)
 	for selected_unit in selected_units:
 		selected_unit.toggle_selection_visual(true)
@@ -48,10 +57,31 @@ func _unselect_unit(removed_unit: CharacterBody2D=null):
 			if selected_units[i] == removed_unit:
 				unit_idx = i
 		selected_units.remove_at(unit_idx)
-	
+
+func _remove_enemy(slained_enemy: CharacterBody2D=null):
+	var unit_idx = 0
+	for i in enemies.size():
+		if enemies[i] == slained_enemy:
+			unit_idx = i
+	enemies.remove_at(unit_idx)
+
+func _display_win_or_lose():
+	if enemies.size() == 0:
+		get_tree().paused = true
+		win_or_lose.visible = true
+		win_or_lose.get_node("Lose").visible = false
+	if killed_players == players.size():
+		get_tree().paused = true
+		win_or_lose.visible = true
+		win_or_lose.get_node("Win").visible = false
 
 func _on_unit_killed(unit):
-	_unselect_unit(unit)
+	if unit != null and unit.is_player == true:
+		_unselect_unit(unit)
+		killed_players += 1
+	elif unit != null and unit.is_player == false:
+		_remove_enemy(unit)
+	_display_win_or_lose()
 
 func _try_command_unit():
 	if len(selected_units) == 0:
