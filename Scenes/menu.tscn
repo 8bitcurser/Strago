@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxop8wjh87v2q"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_cep33"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cep33")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -5.0
+offset_right = -12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.666667, 0.721569, 0.666667, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 56
+text = "Strago 1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyCountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 103.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Enemy Count: "
+
+[node name="AllyCountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = 57.0
+offset_right = 246.0
+offset_bottom = 106.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Ally Count: "
+
+[node name="EnemyCount" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 296.0
+offset_right = 384.0
+offset_bottom = 354.0
+min_value = 1.0
+max_value = 15.0
+value = 1.0
+alignment = 1
+
+[node name="AllyCount" type="SpinBox" parent="."]
+offset_left = 274.0
+offset_top = 375.0
+offset_right = 384.0
+offset_bottom = 433.0
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+alignment = 1
+
+[node name="Launch" type="Button" parent="."]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 295.0
+offset_right = 903.0
+offset_bottom = 441.0
+theme_override_font_sizes/font_size = 35
+text = "FIGHT!"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Launch" to="." method="_on_launch_pressed"]

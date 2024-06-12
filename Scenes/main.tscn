@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://basj6ox7b8tr5"]
+[gd_scene load_steps=7 format=3 uid="uid://basj6ox7b8tr5"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_reeh6"]
 [ext_resource type="Texture2D" uid="uid://bfhsrk3776k7u" path="res://assets/sprites/tilemap.png" id="1_wx7jg"]
-[ext_resource type="PackedScene" uid="uid://iam7wrobkrfd" path="res://Scenes/player_unit.tscn" id="2_5xrlj"]
-[ext_resource type="PackedScene" uid="uid://dcbnkesv6v1gr" path="res://Scenes/enemy_unit.tscn" id="3_wfkmq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_koe1t"]
 texture = ExtResource("1_wx7jg")
@@ -145,21 +143,23 @@ separation = Vector2i(1, 1)
 sources/0 = SubResource("TileSetAtlasSource_koe1t")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m1vwu"]
-vertices = PackedVector2Array(0, -96, 0, -32, -17, -32, -144, -96, -144, 96, -17, 17, -1, 96, -1, 17)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-144, -96, 0, -96, 0, -32, -17, -32, -17, 17, -1, 17, -1, 96, -144, 96)])
+vertices = PackedVector2Array(-144, -96, 0, -96, -1, -37, -22, -37, -144, 96, -22, 22, -1, 96, -1, 22)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-144, -96, 0, -96, -1, -37, -22, -37, -22, 22, -1, 22, -1, 96, -144, 96)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_edkyj"]
-vertices = PackedVector2Array(144, -95, 145, 97, 0, 97, 16, 17, 0, 17, 16, -30, 0, -95, 0, -30)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 3), PackedInt32Array(0, 3, 5), PackedInt32Array(6, 0, 5, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(144, -95, 0, -95, 0, -30, 16, -30, 16, 17, 0, 17, 0, 97, 145, 97)])
+vertices = PackedVector2Array(144, -95, 145, 97, 0, 97, 19, 23, 19, -38, 0, -38, 0, -95, 0, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 0), PackedInt32Array(2, 7, 3), PackedInt32Array(0, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(144, -95, 0, -95, 0, -38, 19, -38, 19, 23, 0, 24, 0, 97, 145, 97)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_reeh6")
+metadata/_edit_vertical_guides_ = [-130.0, -50.0, 45.0, 125.0]
+metadata/_edit_horizontal_guides_ = [-50.0, 50.0]
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2wgx6")
@@ -174,42 +174,6 @@ navigation_polygon = SubResource("NavigationPolygon_edkyj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-
-[node name="PlayerUnit" parent="." instance=ExtResource("2_5xrlj")]
-position = Vector2(-97, 3)
-is_player = true
-
-[node name="PlayerUnit2" parent="." instance=ExtResource("2_5xrlj")]
-position = Vector2(-78, -25)
-is_player = true
-
-[node name="PlayerUnit3" parent="." instance=ExtResource("2_5xrlj")]
-position = Vector2(-81, 35)
-is_player = true
-
-[node name="EnemyUnit" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(70, 34)
-damage = 15
-
-[node name="EnemyUnit2" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(111, 31)
-damage = 15
-
-[node name="EnemyUnit3" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(67, -7)
-damage = 15
-
-[node name="EnemyUnit6" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(115, -29)
-damage = 15
-
-[node name="EnemyUnit4" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(55, -52)
-damage = 15
-
-[node name="EnemyUnit5" parent="." instance=ExtResource("3_wfkmq")]
-position = Vector2(115, -72)
-damage = 15
 
 [node name="WinOrLose" type="Control" parent="."]
 process_mode = 3

@@ -9,10 +9,26 @@ var killed_players: int = 0
 
 
 func _ready():
+	const enemy_scene: PackedScene = preload("res://Scenes/enemy_unit.tscn")
+	const player_scene: PackedScene = preload("res://Scenes/player_unit.tscn")
+	for i in range(Singleton.enemy_units_count):
+		var enemy = enemy_scene.instantiate()
+		add_child(enemy)
+		enemy.global_position.x = randi_range(45,126)
+		enemy.global_position.y = randi_range(-50,50)
+
+	for i in range(Singleton.ally_units_count):
+		var player = player_scene.instantiate()
+		add_child(player)
+		player.global_position.x = randi_range(-130,-50)
+		player.global_position.y = randi_range(-50,50)
+
 	for player in players:
 		player.killed.connect(_on_unit_killed)
+
 	for enemy in enemies:
 		enemy.killed.connect(_on_unit_killed)
+		
 	
 
 func _input(event):
