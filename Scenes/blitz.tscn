@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://basj6ox7b8tr5"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_mcoda"]
+[ext_resource type="PackedScene" uid="uid://boaqdtd13t0yj" path="res://Scenes/base_map.tscn" id="2_yk2ep"]
+
+[node name="Blitz" type="Node2D"]
+script = ExtResource("1_mcoda")
+metadata/_edit_vertical_guides_ = [-130.0, -50.0, 45.0, 125.0]
+metadata/_edit_horizontal_guides_ = [-50.0, 50.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="BaseMap" parent="." instance=ExtResource("2_yk2ep")]
+position = Vector2(2, 5)
+
+[node name="WinOrLose" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="WinOrLose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 105.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.505882, 0.505882, 0.505882, 0.580392)
+
+[node name="Win" type="Label" parent="WinOrLose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -90.0
+offset_right = 14.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.952941, 0.2, 1)
+text = "You Win!"
+
+[node name="Lose" type="Label" parent="WinOrLose"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.615686, 0.0470588, 0, 1)
+text = "You Lose"

@@ -1,15 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxop8wjh87v2q"]
+[gd_scene load_steps=3 format=3 uid="uid://cxop8wjh87v2q"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_cep33"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_hmlq7"]
 
-[node name="Menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vtdo"]
+bg_color = Color(0.780392, 0.309804, 0.298039, 1)
+
+[node name="MenuBlitz" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cep33")
+script = ExtResource("1_hmlq7")
+metadata/_edit_horizontal_guides_ = [282.0, 426.0]
+metadata/_edit_vertical_guides_ = [446.0, 710.0, 331.0]
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,7 +36,8 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 56
-text = "Strago 1.0"
+text = "Strago 1.0
+Practice mode"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -40,9 +46,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 103.0
-offset_bottom = 11.5
+offset_left = 98.0
+offset_top = -37.0
+offset_right = 341.0
+offset_bottom = 12.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 35
 text = "Enemy Count: "
@@ -52,30 +59,31 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = 57.0
-offset_right = 246.0
-offset_bottom = 106.0
+offset_left = 150.0
+offset_top = 43.0
+offset_right = 393.0
+offset_bottom = 92.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 35
 text = "Ally Count: "
 
 [node name="EnemyCount" type="SpinBox" parent="."]
 layout_mode = 0
-offset_left = 274.0
-offset_top = 296.0
-offset_right = 384.0
-offset_bottom = 354.0
+offset_left = 352.0
+offset_top = 283.0
+offset_right = 462.0
+offset_bottom = 341.0
 min_value = 1.0
 max_value = 15.0
 value = 1.0
 alignment = 1
 
 [node name="AllyCount" type="SpinBox" parent="."]
-offset_left = 274.0
-offset_top = 375.0
-offset_right = 384.0
-offset_bottom = 433.0
+layout_mode = 0
+offset_left = 352.0
+offset_top = 362.0
+offset_right = 462.0
+offset_bottom = 420.0
 min_value = 1.0
 max_value = 5.0
 value = 1.0
@@ -83,11 +91,13 @@ alignment = 1
 
 [node name="Launch" type="Button" parent="."]
 layout_mode = 0
-offset_left = 653.0
-offset_top = 295.0
-offset_right = 903.0
-offset_bottom = 441.0
+offset_left = 711.0
+offset_top = 284.0
+offset_right = 961.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2vtdo")
 text = "FIGHT!"
 icon_alignment = 1
 expand_icon = true

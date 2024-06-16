@@ -20,10 +20,11 @@ signal killed(unit: CharacterBody2D)
 
 func _ready():
 	var gm = get_node('/root/main')
-	if is_player:
-		gm.players.append(self)
-	else:
-		gm.enemies.append(self)
+	if gm != null:
+		if is_player:
+			gm.players.append(self)
+		else:
+			gm.enemies.append(self)
 
 func _physics_process(delta):
 	if agent.is_navigation_finished():
